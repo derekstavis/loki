@@ -1,0 +1,542 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Configuration · Loki</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+        <link rel="stylesheet" href="gitbook/style.css">
+    
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="website-1506925898727.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    
+
+    
+    <link rel="next" href="command-line-arguments.html" />
+    
+    
+    <link rel="prev" href="getting-started.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+    <div class="book-logo">
+        
+        <a href="https://github.com/oblador/loki/">
+        
+        
+        <img src="logo.svg"/>
+        
+        
+        </a>
+        
+    </div>
+    
+    
+        <nav role="navigation">
+        
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        
+        <li class="chapter 
+              "
+            data-level="1.1" 
+            data-path="./">
+
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+              "
+            data-level="1.2" 
+            data-path="getting-started.html">
+
+            
+                <a href="getting-started.html">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+            active  selected  "
+            data-level="1.3" 
+            data-path="configuration.html">
+
+            
+                <a href="configuration.html">
+            
+                    
+                    Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+              "
+            data-level="1.4" 
+            data-path="command-line-arguments.html">
+
+            
+                <a href="command-line-arguments.html">
+            
+                    
+                    Command line arguments
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+                
+    
+        
+        <li class="chapter 
+               hide "
+            data-level="1.4.1" 
+            data-path="command-line-arguments.html">
+
+            
+                <a href="command-line-arguments.html#loki-test">
+            
+                    
+                    loki test
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+               hide "
+            data-level="1.4.2" 
+            data-path="command-line-arguments.html">
+
+            
+                <a href="command-line-arguments.html#loki-update">
+            
+                    
+                    loki update
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+               hide "
+            data-level="1.4.3" 
+            data-path="command-line-arguments.html">
+
+            
+                <a href="command-line-arguments.html#loki-approve">
+            
+                    
+                    loki approve
+            
+                </a>
+            
+
+            
+        </li>
+    
+        
+        <li class="chapter 
+               hide "
+            data-level="1.4.4" 
+            data-path="command-line-arguments.html">
+
+            
+                <a href="command-line-arguments.html#loki-init">
+            
+                    
+                    loki init
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter 
+              "
+            data-level="1.5" 
+            data-path="continuous-integration.html">
+
+            
+                <a href="continuous-integration.html">
+            
+                    
+                    Continuous integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+</ul>
+
+
+        </nav>
+    
+
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Configuration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="configuration">Configuration</h1>
+<p>The init command will add a <code>loki</code> section to your <code>package.json</code>, but you can edit it to your wishes. <em>NOTE</em>: Any command line argument that <code>loki test</code> accepts can also be added to the <code>loki</code> config object.</p>
+<p>Example <code>package.json</code>: </p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;my-project&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;loki&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;chromeSelector&quot;</span><span class="token operator">:</span> <span class="token string">&quot;#my-decorator &gt; *&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;configurations&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;chrome.laptop&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chrome.app&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;width&quot;</span><span class="token operator">:</span> <span class="token number">1366</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;height&quot;</span><span class="token operator">:</span> <span class="token number">768</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;chrome.iphone7&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;skipStories&quot;</span><span class="token operator">:</span> &quot;loading|MyFailingComponent&quot;<span class="token punctuation">,</span>
+        <span class="token property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chrome.app&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;preset&quot;</span><span class="token operator">:</span> <span class="token string">&quot;iPhone 7&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ios&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ios.simulator&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;android&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;android.emulator&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="chromeselector"><code>chromeSelector</code></h2>
+<p>This setting is a CSS selector to the part of the page you want screenshots of. This is useful if you have decorators that&apos;s not really part of the component itself. Note that it doesn&apos;t screenshot the DOM element itself but rather the crops the screenshot to those dimensions, so if you have any elements absolutely positioned above they will be included.</p>
+<h2 id="diffingengine"><code>diffingEngine</code></h2>
+<p>There are two currently available options to choose from when comparing images in loki: </p>
+<h3 id="gm"><code>gm</code></h3>
+<p>Uses the GraphicsMagick library to create diffs, this is generally faster but requires to have the library installed. You can install it with homebrew using <code>brew install graphicsmagick</code>. This is default if available.</p>
+<h3 id="looks-same"><code>looks-same</code></h3>
+<p>A JavaScript only solution that will work out of the box on every machine, however it is slower and will produce a different diff image. </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>gm</code></th>
+<th><code>looks-same</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dependency</strong></td>
+<td><a href="http://www.graphicsmagick.org" target="_blank">GraphicsMagick</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>&#x1F3C3;Fast</td>
+<td>&#x1F6B6;Slower</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td><img src="gm-diff.png" alt=""></td>
+<td><img src="looks-same-diff.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h2 id="skipstories"><code>skipStories</code></h2>
+<p>This setting is a regular expression matched against the concatenated kind and story name (<code>${kind} ${story}</code>), case insensitive. It&apos;s useful if some story breaks the tests or contains animations as an alternative to comment it out. </p>
+<h2 id="storiesfilter"><code>storiesFilter</code></h2>
+<p>Opposite to <code>skipStories</code>. </p>
+<h2 id="configurations"><code>configurations</code></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Targets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>target</code></strong></td>
+<td><em>string</em></td>
+<td>Target platform, possible values are <code>chrome.app</code>, <code>chrome.docker</code>, <code>ios.simulator</code>, <code>android.emulator</code>.</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong><code>skipStories</code></strong></td>
+<td><em>string</em></td>
+<td>Same as <code>loki.skipStories</code>, but applied to only this configuration.</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong><code>storiesFilter</code></strong></td>
+<td><em>string</em></td>
+<td>Same as <code>loki.storiesFilter</code>, but applied to only this configuration.</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong><code>chromeSelector</code></strong></td>
+<td><em>string</em></td>
+<td>Same as <code>loki.chromeSelector</code>, but applied to only this configuration.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>preset</code></strong></td>
+<td><em>string</em></td>
+<td>Predefined bundled configuration, possible values are <code>Retina Macbook Pro 15</code>, <code>iPhone 7</code>, <code>iPhone 5</code> and <code>Google Pixel</code>.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>userAgent</code></strong></td>
+<td><em>string</em></td>
+<td>Custom user agent.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>integer</em></td>
+<td>Browser viewport width.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>integer</em></td>
+<td>Browser viewport height.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>deviceScaleFactor</code></strong></td>
+<td><em>integer</em></td>
+<td>Browser pixel density multiple, use <code>2</code> for retina, not supported in docker.</td>
+<td><code>chrome.app</code></td>
+</tr>
+<tr>
+<td><strong><code>mobile</code></strong></td>
+<td><em>boolean</em></td>
+<td>Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more.</td>
+<td><code>chrome.*</code></td>
+</tr>
+<tr>
+<td><strong><code>fitWindow</code></strong></td>
+<td><em>boolean</em></td>
+<td>Whether a view that exceeds the available browser window area should be scaled down to fit.</td>
+<td><code>chrome.*</code></td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: Getting started">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="command-line-arguments.html" class="navigation navigation-next " aria-label="Next page: Command line arguments">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.3","depth":1,"next":{"title":"Command line arguments","level":"1.4","depth":1,"path":"command-line-arguments.md","ref":"command-line-arguments.md","articles":[{"title":"loki test","level":"1.4.1","depth":2,"anchor":"#loki-test","path":"command-line-arguments.md","ref":"command-line-arguments.md#loki-test","articles":[]},{"title":"loki update","level":"1.4.2","depth":2,"anchor":"#loki-update","path":"command-line-arguments.md","ref":"command-line-arguments.md#loki-update","articles":[]},{"title":"loki approve","level":"1.4.3","depth":2,"anchor":"#loki-approve","path":"command-line-arguments.md","ref":"command-line-arguments.md#loki-approve","articles":[]},{"title":"loki init","level":"1.4.4","depth":2,"anchor":"#loki-init","path":"command-line-arguments.md","ref":"command-line-arguments.md#loki-init","articles":[]}]},"previous":{"title":"Getting started","level":"1.2","depth":1,"path":"getting-started.md","ref":"getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","theme-gestalt","-theme-default","prism","-highlight","anchorjs","github","styles-sass-fix"],"root":"docs","styles":{"website":"website-1506925898727.css"},"pluginsConfig":{"prism":{},"styles-sass-fix":{},"github":{"url":"https://github.com/oblador/loki/"},"theme-gestalt":{"styles":{"website":"styles/website.css"},"showLevel":false,"logo":"logo.svg","favicon":"favicon.png","excludeDefaultStyles":false},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/oblador/loki/tree/master"},"anchorjs":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loki","gitbook":"3.2.2"},"file":{"path":"configuration.md","mtime":"2017-10-02T06:27:23.371Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-02T06:31:37.467Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.1.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
